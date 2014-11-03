@@ -21,9 +21,21 @@ angular.module('CollectionPresenter.List', ['ngRoute'])
 })
 
 .controller("CollectionController", function($scope, $routeParams, Item) {
+  var lastSelected = null;
+
   $scope.title = "Collection";
-  /*Item.query(function (data) {
-    console.log($routeParams.id);
-    $scope.item = data.item;
-  });*/
+  Item.get(null, function(data) {
+    $scope.items = data;
+  });
+
+  $scope.selectItem = function(item) {
+    Item.get({ id: item.id }, function(data) {
+      $scope.selectedItem = data;
+
+      if (lastSelected)
+        lastSelected.selected = false;
+      item.selected = true;
+      lastSelected = item;
+    });
+  };
 });

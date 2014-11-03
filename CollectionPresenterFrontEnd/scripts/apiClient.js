@@ -42,11 +42,23 @@ var items = [
 		screenshots: [ "http://static.spiceworks.com/attachments/post/0002/6651/OMNIA_227__800x600_.jpg?a=4", "http://static.spiceworks.com/attachments/post/0002/6651/OMNIA_227__800x600_.jpg?a=3", "http://static.spiceworks.com/attachments/post/0002/6651/OMNIA_227__800x600_.jpg?a=2" ,"http://static.spiceworks.com/attachments/post/0002/6651/OMNIA_227__800x600_.jpg?a=1" ],
 		categories: [2],
 		dateAcquired: "10/05/2014",
-		youtubeVideo: ""
+		youtubeVideo: "something"
 	}
 ];
 
 angular.module("CollectionPresenter.ApiClient", ['ngResource'])
+
+.factory("Collection", function($resource) {
+	return {
+		query: function(cb) {
+			cb({ collections: [
+				{ id: 1, name: "Software" },
+				{ id: 2, name: "Processadores" },
+				{ id: 3, name: "Diversos" }
+			] });
+		}
+	}
+})
 
 .factory("Categories", function($resource) {
 	return {
@@ -99,8 +111,13 @@ angular.module("CollectionPresenter.ApiClient", ['ngResource'])
 .factory("Item", function($resource) {
 	return {
 		get: function(filter, cb) {
+			if (!filter) {
+				cb(items);
+				return;
+			}
+
 			var item = items[filter.id - 1];
 			cb(item);
 		}
 	}
-})
+});

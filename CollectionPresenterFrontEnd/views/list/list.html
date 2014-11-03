@@ -1,1 +1,12 @@
 <h3>{{title}}</h3>
+
+<div class="grid fluid">
+	<div class="row">
+		<div class="span4">
+			<item-list ng-model="items" />
+		</div>
+		<div class="span8">
+			<item-presenter item="selectedItem" ng-show="selectedItem" />
+		</div>
+	</div>
+</div>
