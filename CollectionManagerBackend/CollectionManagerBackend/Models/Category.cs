@@ -9,7 +9,7 @@ namespace CollectionManagerBackend.Models
     //[Table("collectionmanager.category")]
     public partial class Category
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CategoryID { get; set; }
 
         [Required]
@@ -18,8 +18,6 @@ namespace CollectionManagerBackend.Models
 
         [StringLength(1000)]
         public string Description { get; set; }
-
-        //public int CollectionID { get; set; }
 
         public virtual Collection collection { get; set; }
 

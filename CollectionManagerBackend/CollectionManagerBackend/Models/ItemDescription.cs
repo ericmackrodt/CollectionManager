@@ -1,18 +1,15 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
+
 namespace CollectionManagerBackend.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
-    [Table("collectionmanager.itemdescription")]
     public partial class ItemDescription
     {
-        [Key]
-        [Column(TypeName = "int(11)")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long ItemID { get; set; }
+        public long ItemDescriptionID { get; set; }
 
         [Required]
         [StringLength(2000)]

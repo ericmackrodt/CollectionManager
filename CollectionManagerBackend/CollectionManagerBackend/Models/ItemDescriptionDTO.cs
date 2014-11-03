@@ -11,11 +11,13 @@ namespace CollectionManagerBackend.Models
         public string Source { get; set; }
         public string SourceUrl { get; set; }
 
-        //public ItemDescriptionDTO(ItemDescription itemDescription)
-        //{
-        //    Content = itemDescription.Content;
-        //    Source = itemDescription.Source;
-        //    SourceUrl = itemDescription.SourceUrl;
-        //}
+        public ItemDescriptionDTO() {}
+
+        public ItemDescriptionDTO(ItemDescription itemDescription)
+        {
+            Content = itemDescription.Content;
+            Source = itemDescription.Source;
+            SourceUrl = itemDescription.SourceUrl;
+        }
     }
 }

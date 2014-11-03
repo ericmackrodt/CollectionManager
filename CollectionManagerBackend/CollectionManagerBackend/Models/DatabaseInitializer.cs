@@ -10,12 +10,12 @@ namespace CollectionManagerBackend.Models
     {
         protected override void Seed(CollectionManagerEntities context)
         {
-            var collection = new Collection()
-            {
-                Name = "Software"
-            };
+            context.Collections.Add(new Collection() { Name = "Software" });
+            context.Collections.Add(new Collection() { Name = "Diversos" });
+            context.Collections.Add(new Collection() { Name = "Processadores" });
 
-            context.Collections.Add(collection);
+            context.ItemImageTypes.Add(new ItemImageType() { ItemImageTypeID = 1, Name = "Photo" });
+            context.ItemImageTypes.Add(new ItemImageType() { ItemImageTypeID = 2, Name = "Screenshot" });
 
             context.SaveChanges();
         }

@@ -23,7 +23,8 @@ namespace CollectionManagerBackend.Controllers
         // GET api/item
         public IEnumerable<ItemDTO> Get()
         {
-            return collectionData.Items.Select(o => new ItemDTO(o));
+            var items = collectionData.Items.ToList();
+            return items.Select(o => new ItemDTO(o));
             //return null;
         }
 
@@ -34,8 +35,9 @@ namespace CollectionManagerBackend.Controllers
         }
 
         // POST api/item
-        public void Post([FromBody]string value)
+        public void Post([FromBody]ItemDTO value)
         {
+            
         }
 
         // PUT api/item/5
@@ -50,8 +52,12 @@ namespace CollectionManagerBackend.Controllers
 
         protected override void Dispose(bool disposing)
         {
+            if (disposing)
+            {
+                collectionData.Dispose();
+            }
+
             base.Dispose(disposing);
-            collectionData.Dispose();
         }
     }
 }

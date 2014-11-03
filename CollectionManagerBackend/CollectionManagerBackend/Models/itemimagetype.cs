@@ -1,19 +1,15 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
+
 namespace CollectionManagerBackend.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
-    [Table("collectionmanager.itemimagetype")]
     public partial class ItemImageType
     {
-        public ItemImageType()
-        {
-            Images = new HashSet<ItemImage>();
-        }
-
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ItemImageTypeID { get; set; }
 
         [Required]

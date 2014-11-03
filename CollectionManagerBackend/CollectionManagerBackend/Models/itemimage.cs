@@ -1,14 +1,14 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
+
 namespace CollectionManagerBackend.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
-    [Table("collectionmanager.itemimage")]
     public partial class ItemImage
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ItemImageID { get; set; }
 
         [Required]
@@ -16,9 +16,6 @@ namespace CollectionManagerBackend.Models
         public string Path { get; set; }
 
         public int ItemImageTypeID { get; set; }
-
-        [Column(TypeName = "uint")]
-        public long ItemID { get; set; }
 
         public virtual Item Item { get; set; }
 

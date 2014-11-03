@@ -17,14 +17,21 @@ namespace CollectionManagerBackend.Models
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Collection> Collections { get; set; }
         public virtual DbSet<Item> Items { get; set; }
-        //public virtual DbSet<ItemCharacteristic> ItemCharacteristics { get; set; }
-        //public virtual DbSet<ItemDescription> ItemDescriptions { get; set; }
-        //public virtual DbSet<ItemImage> ItemImages { get; set; }
-        //public virtual DbSet<ItemImageType> ItemImageTypes { get; set; }
+        public virtual DbSet<ItemCharacteristic> ItemCharacteristics { get; set; }
+        public virtual DbSet<ItemDescription> ItemDescriptions { get; set; }
+        public virtual DbSet<ItemImage> ItemImages { get; set; }
+        public virtual DbSet<ItemImageType> ItemImageTypes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<ItemDescription>()
+                .HasKey(t => t.ItemDescriptionID);
+
+            modelBuilder.Entity<Item>()
+                .HasRequired(t => t.Description)
+                .WithRequiredPrincipal(t => t.Item);
 
             //modelBuilder.Entity<Category>()
             //    .Property(e => e.Name)

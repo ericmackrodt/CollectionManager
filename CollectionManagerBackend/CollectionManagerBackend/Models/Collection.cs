@@ -9,7 +9,7 @@ namespace CollectionManagerBackend.Models
     //[Table("collectionmanager.collection")]
     public partial class Collection
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CollectionID { get; set; }
 
         [Required]
