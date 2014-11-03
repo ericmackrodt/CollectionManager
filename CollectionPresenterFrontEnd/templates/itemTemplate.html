@@ -1,0 +1,44 @@
+<h2>{{item.name}} <small>({{item.year}})</small></h2>
+<blockquote>
+	<p>{{item.description.content}}</p>
+	<small><a href="{{item.description.url}}" target="_blank">{{item.description.source}}</a></small>
+</blockquote>
+
+<dl class="horizontal">
+	<dt>Developer:</dt>
+	<dd>{{item.developer}}</dd>
+	<dt>Publisher:</dt>
+	<dd>{{item.publisher}}</dd>
+	<dt>Manufacturer:</dt>
+	<dd>{{item.manufacturer}}</dd>
+	<dt>Date Acquired:</dt>
+	<dd>{{item.dateAcquired}}</dd>
+</dl>
+
+<h4>Characteristics</h4>
+<ul>
+	<li ng-repeat="characteristic in item.characteristics">{{characteristic}}</li>
+</ul>
+
+<h4>Images</h4>
+<div class="grid fluid">
+	<div class="row">
+		<a href="{{image}}" ng-repeat="image in item.images track by $index">
+			<img src="{{image}}" class="span3 shadow margin10" />
+		</a>
+	</div>
+</div>
+
+<h4>Screenshots</h4>
+<div class="grid fluid">
+	<div class="row">
+		<a href="{{image}}" ng-repeat="image in item.screenshots track by $index">
+			<img src="{{image}}" class="span3 shadow margin10" />
+		</a>
+	</div>
+</div>
+
+<h4>Youtube Video</h4>
+<iframe id="ytplayer" type="text/html"
+  src="http://www.youtube.com/embed/{{item.youtubeVideo}}?autoplay=0&origin=http://example.com"
+  frameborder="0"/>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="CollectionPresenter">
+<head>
+	<link rel="stylesheet" type="text/css" href="css/metro-bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/metro-bootstrap-responsive.min.css">
+	<link rel="stylesheet" type="text/css" href="css/iconFont.min.css">
+
+	<script type="text/javascript" src="scripts/libs/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="scripts/libs/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="scripts/libs/metro.min.js"></script>
+	
+	<script type="text/javascript" src="scripts/libs/angular.min.js"></script>
+	<script type="text/javascript" src="scripts/libs/angular-route.min.js"></script>
+	<script type="text/javascript" src="scripts/libs/angular-resource.min.js"></script>
+	<script type="text/javascript" src="scripts/app.js"></script>
+	<script type="text/javascript" src="scripts/apiClient.js"></script>
+	<script type="text/javascript" src="views/main/main.js"></script>
+	<script type="text/javascript" src="views/item/item.js"></script>
+	<script type="text/javascript" src="views/list/list.js"></script>
+</head>
+
+<body class="metro">
+	<h1>Testeee</h1>
+	<div class="container">
+		<div class="grid fluid">
+			<div class="row">
+				<div class="span9">
+					<div ng-view></div>
+				</div>
+				<div class="span3">
+					<categories-sidebar />
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
