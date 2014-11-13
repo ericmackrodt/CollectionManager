@@ -6,11 +6,10 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace CollectionManagerBackend.Models
 {   
-    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public partial class CollectionManagerEntities : DbContext, ICollectionManagerEntities
     {
         public CollectionManagerEntities()
-            : base("CollectionManagerContext")
+            : base("CollectionContext")
         {
         }
 

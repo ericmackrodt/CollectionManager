@@ -6,19 +6,15 @@ using System.Data.Entity.Spatial;
 
 namespace CollectionManagerBackend.Models
 {
-    //[Table("collectionmanager.collection")]
-    public partial class Collection
+    public partial class ItemCharacteristic
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CollectionID { get; set; }
+        public int ItemCharacteristicID { get; set; }
 
         [Required]
-        [StringLength(256)]
+        [StringLength(150)]
         public string Name { get; set; }
 
-        [StringLength(1000)]
-        public string Description { get; set; }
-
-        public virtual ICollection<Category> Categories { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
     }
 }

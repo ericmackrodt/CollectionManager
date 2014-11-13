@@ -1,4 +1,6 @@
-﻿using CollectionManagerBackend.Models;
+﻿using CollectionManagerBackend.Common;
+using CollectionManagerBackend.Models;
+using CollectionManagerBackend.Models.ClientModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,58 +8,59 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Controllers;
+using System.Web.Http.OData;
 
 namespace CollectionManagerBackend.Controllers
 {
-    public class ItemController : ApiController
+    public class ItemController : BaseController<ItemDTO>
     {
-        private CollectionManagerEntities collectionData;
+        private IMapToNew<Item, ItemDTO> _fromItem;
+        private IMapToNew<ItemDTO, Item> _toItem;
 
-        protected override void Initialize(HttpControllerContext controllerContext)
+        public ItemController(
+            ICollectionManagerEntities entities,
+            IMapToNew<Item, ItemDTO> fromItem,
+            IMapToNew<ItemDTO, Item> toItem)
+            : base (entities)
         {
-            base.Initialize(controllerContext);
-
-            collectionData = new CollectionManagerEntities();
+            _fromItem = fromItem;
+            _toItem = toItem;
         }
 
-        // GET api/item
-        public IEnumerable<ItemDTO> Get()
+        public override IEnumerable<ItemDTO> Get()
         {
-            var items = collectionData.Items.ToList();
-            return items.Select(o => new ItemDTO(o));
-            //return null;
+            var items = _entities.Items.ToArray();
+            return items.Select(o => _fromItem.Map(o));
         }
 
-        // GET api/item/5
-        public string Get(int id)
+        public override ItemDTO Get(int id)
         {
-            return "value";
+            var item = _entities.Items.FirstOrDefault(o => o.ItemID == id);
+            return _fromItem.Map(item);
         }
 
-        // POST api/item
-        public void Post([FromBody]ItemDTO value)
+        public override HttpResponseMessage Post([FromBody]ItemDTO content)
         {
-            
+            if (!ModelState.IsValid)
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+
+            var item = _toItem.Map(content);
+
+
+            _entities.Items.Add(item);
+            _entities.SaveChanges();
+
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        // PUT api/item/5
-        public void Put(int id, [FromBody]string value)
+        public override HttpResponseMessage Put(int id, string value)
         {
+            throw new NotImplementedException();
         }
 
-        // DELETE api/item/5
-        public void Delete(int id)
+        public override HttpResponseMessage Delete(int id)
         {
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                collectionData.Dispose();
-            }
-
-            base.Dispose(disposing);
+            throw new NotImplementedException();
         }
     }
 }

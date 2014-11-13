@@ -20,6 +20,9 @@ namespace CollectionManagerBackend.Models
         public string Description { get; set; }
 
         [Required]
+        [ForeignKey("Collection")]
+        public int CollectionID { get; set; }
+
         public virtual Collection Collection { get; set; }
 
         public virtual ICollection<Item> Items { get; set; }

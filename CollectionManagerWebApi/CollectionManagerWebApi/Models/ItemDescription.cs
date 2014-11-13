@@ -6,19 +6,21 @@ using System.Data.Entity.Spatial;
 
 namespace CollectionManagerBackend.Models
 {
-    //[Table("collectionmanager.collection")]
-    public partial class Collection
+    public partial class ItemDescription
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CollectionID { get; set; }
+        public long ItemDescriptionID { get; set; }
 
         [Required]
-        [StringLength(256)]
-        public string Name { get; set; }
+        [StringLength(2000)]
+        public string Content { get; set; }
+
+        [StringLength(100)]
+        public string Source { get; set; }
 
         [StringLength(1000)]
-        public string Description { get; set; }
+        public string SourceUrl { get; set; }
 
-        public virtual ICollection<Category> Categories { get; set; }
+        public virtual Item Item { get; set; }
     }
 }

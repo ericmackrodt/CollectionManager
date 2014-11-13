@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace CollectionManagerBackend.Models
+namespace CollectionManagerBackend.Models.ClientModels
 {
     public class ItemDescriptionDTO
     {

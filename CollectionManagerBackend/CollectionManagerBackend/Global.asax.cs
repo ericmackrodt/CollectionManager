@@ -25,6 +25,7 @@ namespace CollectionManagerBackend
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AutofacConfig.Configure();
 
             System.Data.Entity.DbConfiguration.SetConfiguration(new MySql.Data.Entity.MySqlEFConfiguration());
         }
