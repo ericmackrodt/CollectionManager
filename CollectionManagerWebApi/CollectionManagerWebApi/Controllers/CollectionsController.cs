@@ -81,7 +81,7 @@ namespace CollectionManagerWebApi.Controllers
         }
 
         // POST: odata/Collections
-        public IHttpActionResult Post(Collection collection)
+        public IHttpActionResult Post([FromBody]Collection collection)
         {
             if (!ModelState.IsValid)
             {

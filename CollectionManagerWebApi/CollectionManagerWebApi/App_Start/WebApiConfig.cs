@@ -6,9 +6,7 @@ using CollectionManagerBackend.Models;
 using System.Web.OData.Extensions;
 using System.Web.OData.Builder;
 using System.Web.OData.Routing;
-//using System.Web.Http.OData.Routing;
-//using System.Web.Http.OData.Builder;
-//using System.Web.Http.OData.Extensions;
+using CollectionManagerWebApi.Common;
 
 namespace CollectionManagerWebApi
 {
@@ -20,6 +18,8 @@ namespace CollectionManagerWebApi
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            config.Formatters.Add(new ItemImagesMediaTypeFormatter());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

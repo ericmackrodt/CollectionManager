@@ -89,6 +89,14 @@ namespace CollectionManagerWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
+            db.Collections.Attach(category.Collection);
+            //var collection = db.Collections.FirstOrDefault(o => o.CollectionID == category.Collection.CollectionID);
+
+            //if (collection == null)
+            //    return BadRequest("The 'Collection' specified does not exist");
+
+            //category.Collection = collection;
+
             db.Categories.Add(category);
             db.SaveChanges();
 
