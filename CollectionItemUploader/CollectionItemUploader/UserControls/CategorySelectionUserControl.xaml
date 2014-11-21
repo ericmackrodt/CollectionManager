@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="CollectionItemUploader.UserControls.CategorySelectionUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=CategoryViewModel}"
+             mc:Ignorable="d" Loaded="UserControl_Loaded">
+    <Grid>
+        <DockPanel MinWidth="200">
+            <Label DockPanel.Dock="Top" Content="Collections:" />
+            <ListBox x:Name="LstCollections" DockPanel.Dock="Top" Height="150" ItemsSource="{Binding Collections}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectCollectionCommand}"
+                                               CommandParameter="{Binding ElementName=LstCollections, Path=SelectedItem}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
+            <Label DockPanel.Dock="Top" Content="Categories:" />
+            <ListBox x:Name="LstCategories" DockPanel.Dock="Top" VerticalAlignment="Stretch" ItemsSource="{Binding Categories}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectCategoryCommand}"
+                                               CommandParameter="{Binding ElementName=LstCategories, Path=SelectedItem}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
+        </DockPanel>
+    </Grid>
+</UserControl>

@@ -120,6 +120,7 @@
     <Compile Include="Common\StringHelpers.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CollectionsController.cs" />
+    <Compile Include="Controllers\ItemCharacteristicsController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

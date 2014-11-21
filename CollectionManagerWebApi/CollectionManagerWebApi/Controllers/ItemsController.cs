@@ -14,20 +14,6 @@ using CollectionManagerBackend.Models;
 
 namespace CollectionManagerWebApi.Controllers
 {
-    /*
-    The WebApiConfig class may require additional changes to add a route for this controller. Merge these statements into the Register method of the WebApiConfig class as applicable. Note that OData URLs are case sensitive.
-
-    using System.Web.Http.OData.Builder;
-    using System.Web.Http.OData.Extensions;
-    using CollectionManagerBackend.Models;
-    ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
-    builder.EntitySet<Item>("Items");
-    builder.EntitySet<Category>("Categories"); 
-    builder.EntitySet<ItemCharacteristic>("ItemCharacteristics"); 
-    builder.EntitySet<ItemDescription>("ItemDescriptions"); 
-    builder.EntitySet<ItemImage>("ItemImages"); 
-    config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
-    */
     public class ItemsController : ODataController
     {
         private CollectionManagerEntities db = new CollectionManagerEntities();
@@ -89,6 +75,17 @@ namespace CollectionManagerWebApi.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            foreach (var category in item.Categories)
+            {
+                db.Categories.Attach(category);
+            }
+
+            foreach (var characteristic in item.Characteristics)
+            {
+                if (characteristic.ItemCharacteristicID != 0 && db.ItemCharacteristics.Any(o => o.ItemCharacteristicID == characteristic.ItemCharacteristicID))
+                    db.ItemCharacteristics.Attach(characteristic);
             }
 
             db.Items.Add(item);

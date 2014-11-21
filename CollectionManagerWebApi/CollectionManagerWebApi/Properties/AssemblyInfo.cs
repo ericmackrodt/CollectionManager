@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CollectionManagerWebApi")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Collection Manager WebApi Service")]
+[assembly: AssemblyDescription("The backend for the collection manager")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CollectionManagerWebApi")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCompany("Eric Mackrodt")]
+[assembly: AssemblyProduct("Collection Manager WebApi Service")]
+[assembly: AssemblyCopyright("Copyright ©  Eric Mackrodt 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -14,26 +14,26 @@ using CollectionManagerBackend.Models;
 
 namespace CollectionManagerWebApi.Controllers
 {
-    public class CategoriesController : ODataController
+    public class ItemCharacteristicsController : ODataController
     {
         private CollectionManagerEntities db = new CollectionManagerEntities();
 
-        // GET: odata/Categories
+        // GET: odata/ItemCharacteristics
         [EnableQuery]
-        public IQueryable<Category> GetCategories()
+        public IQueryable<ItemCharacteristic> GetItemCharacteristics()
         {
-            return db.Categories;
+            return db.ItemCharacteristics;
         }
 
-        // GET: odata/Categories(5)
+        // GET: odata/ItemCharacteristics(5)
         [EnableQuery]
-        public SingleResult<Category> GetCategory([FromODataUri] int key)
+        public SingleResult<ItemCharacteristic> GetItemCharacteristic([FromODataUri] int key)
         {
-            return SingleResult.Create(db.Categories.Where(category => category.CategoryID == key));
+            return SingleResult.Create(db.ItemCharacteristics.Where(itemCharacteristic => itemCharacteristic.ItemCharacteristicID == key));
         }
 
-        // PUT: odata/Categories(5)
-        public IHttpActionResult Put([FromODataUri] int key, Delta<Category> patch)
+        // PUT: odata/ItemCharacteristics(5)
+        public IHttpActionResult Put([FromODataUri] int key, Delta<ItemCharacteristic> patch)
         {
             Validate(patch.GetEntity());
 
@@ -42,13 +42,13 @@ namespace CollectionManagerWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            Category category = db.Categories.Find(key);
-            if (category == null)
+            ItemCharacteristic itemCharacteristic = db.ItemCharacteristics.Find(key);
+            if (itemCharacteristic == null)
             {
                 return NotFound();
             }
 
-            patch.Put(category);
+            patch.Put(itemCharacteristic);
 
             try
             {
@@ -56,7 +56,7 @@ namespace CollectionManagerWebApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryExists(key))
+                if (!ItemCharacteristicExists(key))
                 {
                     return NotFound();
                 }
@@ -66,31 +66,26 @@ namespace CollectionManagerWebApi.Controllers
                 }
             }
 
-            return Updated(category);
+            return Updated(itemCharacteristic);
         }
 
-        // POST: odata/Categories
-        public IHttpActionResult Post(Category category)
+        // POST: odata/ItemCharacteristics
+        public IHttpActionResult Post(ItemCharacteristic itemCharacteristic)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (category.Collection == null)
-                return BadRequest("You have to have a collection associated with the category");
-
-            db.Collections.Attach(category.Collection);
-
-            db.Categories.Add(category);
+            db.ItemCharacteristics.Add(itemCharacteristic);
             db.SaveChanges();
 
-            return Created(category);
+            return Created(itemCharacteristic);
         }
 
-        // PATCH: odata/Categories(5)
+        // PATCH: odata/ItemCharacteristics(5)
         [AcceptVerbs("PATCH", "MERGE")]
-        public IHttpActionResult Patch([FromODataUri] int key, Delta<Category> patch)
+        public IHttpActionResult Patch([FromODataUri] int key, Delta<ItemCharacteristic> patch)
         {
             Validate(patch.GetEntity());
 
@@ -99,13 +94,13 @@ namespace CollectionManagerWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            Category category = db.Categories.Find(key);
-            if (category == null)
+            ItemCharacteristic itemCharacteristic = db.ItemCharacteristics.Find(key);
+            if (itemCharacteristic == null)
             {
                 return NotFound();
             }
 
-            patch.Patch(category);
+            patch.Patch(itemCharacteristic);
 
             try
             {
@@ -113,7 +108,7 @@ namespace CollectionManagerWebApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryExists(key))
+                if (!ItemCharacteristicExists(key))
                 {
                     return NotFound();
                 }
@@ -123,36 +118,29 @@ namespace CollectionManagerWebApi.Controllers
                 }
             }
 
-            return Updated(category);
+            return Updated(itemCharacteristic);
         }
 
-        // DELETE: odata/Categories(5)
+        // DELETE: odata/ItemCharacteristics(5)
         public IHttpActionResult Delete([FromODataUri] int key)
         {
-            Category category = db.Categories.Find(key);
-            if (category == null)
+            ItemCharacteristic itemCharacteristic = db.ItemCharacteristics.Find(key);
+            if (itemCharacteristic == null)
             {
                 return NotFound();
             }
 
-            db.Categories.Remove(category);
+            db.ItemCharacteristics.Remove(itemCharacteristic);
             db.SaveChanges();
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // GET: odata/Categories(5)/Collection
-        [EnableQuery]
-        public SingleResult<Collection> GetCollection([FromODataUri] int key)
-        {
-            return SingleResult.Create(db.Categories.Where(m => m.CategoryID == key).Select(m => m.Collection));
-        }
-
-        // GET: odata/Categories(5)/Items
+        // GET: odata/ItemCharacteristics(5)/Items
         [EnableQuery]
         public IQueryable<Item> GetItems([FromODataUri] int key)
         {
-            return db.Categories.Where(m => m.CategoryID == key).SelectMany(m => m.Items);
+            return db.ItemCharacteristics.Where(m => m.ItemCharacteristicID == key).SelectMany(m => m.Items);
         }
 
         protected override void Dispose(bool disposing)
@@ -164,9 +152,9 @@ namespace CollectionManagerWebApi.Controllers
             base.Dispose(disposing);
         }
 
-        private bool CategoryExists(int key)
+        private bool ItemCharacteristicExists(int key)
         {
-            return db.Categories.Count(e => e.CategoryID == key) > 0;
+            return db.ItemCharacteristics.Count(e => e.ItemCharacteristicID == key) > 0;
         }
     }
 }

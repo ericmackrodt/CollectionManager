@@ -55,6 +55,10 @@ namespace CollectionManagerBackend.Models
         [DataMember(Name = "youtubeVideo")]
         public string YoutubeVideo { get; set; }
 
+        [DataMember(Name = "standsOut")]
+        public bool StandsOut { get; set; }
+
+        [Required]
         [DataMember(Name = "description")]
         public virtual ItemDescription Description { get; set; }
 
