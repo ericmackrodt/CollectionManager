@@ -19,6 +19,17 @@ namespace CollectionItemUploader.ViewModels
         private readonly IApiClient _apiClient;
         private readonly IBroadcaster _broadcaster;
 
+        private Collection _selectedCollection;
+        public Collection SelectedCollection
+        {
+            get { return _selectedCollection; }
+            set
+            {
+                _selectedCollection = value;
+                NotifyChanged();
+            }
+        }
+
         private ObservableCollection<Collection> _collections;
         public ObservableCollection<Collection> Collections
         {
@@ -60,6 +71,21 @@ namespace CollectionItemUploader.ViewModels
 
             _selectCollectionCommand = new AsyncRelayCommand<Collection>(SelectCollection);
             _selectCategoryCommand = new RelayCommand<Category>(SelectCategory);
+
+            _broadcaster.Event<CollectionCreatedEvent>().Subscribe(OnCollectionCreated);
+            _broadcaster.Event<CreateCategoryEvent>().Subscribe(OnCreateCategory);
+        }
+
+        private async void OnCollectionCreated(Collection obj)
+        {
+            await LoadData(null);
+        }
+
+        private async void OnCreateCategory(Category obj)
+        {
+            obj.Collection = SelectedCollection;
+            await _apiClient.AddCategory(obj);
+            await SelectCollection(SelectedCollection);
         }
 
         private void SelectCategory(Category arg)
@@ -69,6 +95,7 @@ namespace CollectionItemUploader.ViewModels
 
         private async Task SelectCollection(Collection arg)
         {
+            SelectedCollection = arg;
             var categories = await _apiClient.GetCategories(arg.CollectionID);
             Categories = new ObservableCollection<Category>(categories);
             arg.Categories = categories.ToArray();

@@ -99,6 +99,8 @@
     <Compile Include="Common\ApiClient\ApiClient.cs" />
     <Compile Include="Common\ApiClient\IApiClient.cs" />
     <Compile Include="Common\Converters\ImageDataToImageConverter.cs" />
+    <Compile Include="Common\Events\CreateCategoryEvent.cs" />
+    <Compile Include="Common\Events\CollectionCreatedEvent.cs" />
     <Compile Include="Common\Events\CollectionSelectedEvent.cs" />
     <Compile Include="Common\Events\CategorySelectedEvent.cs" />
     <Compile Include="Common\ImageDragAndDropCollection.cs" />
@@ -141,10 +143,18 @@
     </Compile>
     <Compile Include="ViewModels\CategorySelectionViewModel.cs" />
     <Compile Include="Models\DataTransferObjects\ImageData.cs" />
+    <Compile Include="ViewModels\CreateCategoryViewModel.cs" />
+    <Compile Include="ViewModels\CreateCollectionViewModel.cs" />
     <Compile Include="ViewModels\ItemListViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="Views\AddCategoryWindow.xaml.cs">
+      <DependentUpon>AddCategoryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddCollectionWindow.xaml.cs">
+      <DependentUpon>AddCollectionWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -166,6 +176,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\ItemListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddCategoryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddCollectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -203,9 +221,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

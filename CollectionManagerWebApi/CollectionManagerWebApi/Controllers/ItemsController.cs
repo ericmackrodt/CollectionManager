@@ -11,6 +11,8 @@ using System.Web.ModelBinding;
 using System.Web.OData;
 using System.Web.OData.Routing;
 using CollectionManagerBackend.Models;
+using System.IO;
+using CollectionManagerWebApi.Models.DataTransferObjects;
 
 namespace CollectionManagerWebApi.Controllers
 {
@@ -88,10 +90,59 @@ namespace CollectionManagerWebApi.Controllers
                     db.ItemCharacteristics.Attach(characteristic);
             }
 
+            var itemFolderName = string.Format("{0}_{1}", string.Join("", item.Name.Where(o => char.IsLetterOrDigit(o))), Guid.NewGuid().ToString());
+            var collectionFolderPath = System.Web.HttpContext.Current.Server.MapPath("~/Content/CollectionImages");
+            var itemFolderPath = Path.Combine(collectionFolderPath, itemFolderName);
+
+            if (!Directory.Exists(collectionFolderPath))
+                Directory.CreateDirectory(collectionFolderPath);
+
+            if (!Directory.Exists(itemFolderPath))
+                Directory.CreateDirectory(itemFolderPath);
+
+            item.Images = new List<ItemImage>();
+
+            foreach (var image in item.ImageUploads)
+            {
+                var fileName = SaveImage("image-" + Guid.NewGuid().ToString(), itemFolderPath, image);
+                item.Images.Add(new ItemImage()
+                {
+                    ImageType = ImageType.Image,
+                    Path = Path.Combine(itemFolderName, fileName)
+                });
+            }
+
+            foreach (var image in item.ScreenshotUploads)
+            {
+                var fileName = SaveImage("screenshot-" + Guid.NewGuid().ToString(), itemFolderPath, image);
+                item.Images.Add(new ItemImage()
+                {
+                    ImageType = ImageType.Screenshot,
+                    Path = Path.Combine(itemFolderName, fileName)
+                });
+            }
+
             db.Items.Add(item);
             db.SaveChanges();
 
             return Created(item);
+        }
+
+        private string SaveImage(string fileName, string folderPath, ImageUploadData image)
+        {
+            var fn = fileName + Path.GetExtension(image.FileName);
+            var imagePath = Path.Combine(folderPath, fn);
+
+            using (var stream = new FileStream(imagePath, FileMode.CreateNew, FileAccess.Write))
+            {
+                using (var fs = new BinaryWriter(stream))
+                {
+                    fs.Write(image.ImageData);
+                    fs.Close();
+                }
+            }
+
+            return fn;
         }
 
         // PATCH: odata/Items(5)

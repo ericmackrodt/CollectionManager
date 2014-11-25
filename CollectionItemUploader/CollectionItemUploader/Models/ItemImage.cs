@@ -17,6 +17,12 @@ namespace CollectionManagerBackend.Models
         public virtual Item Item { get; set; }
 
         [DataMember(Name = "imageType")]
-        public virtual ItemImageType ImageType { get; set; }
+        public virtual ImageType ImageType { get; set; }
+    }
+
+    public enum ImageType
+    {
+        Image = 0,
+        Screenshot = 1
     }
 }

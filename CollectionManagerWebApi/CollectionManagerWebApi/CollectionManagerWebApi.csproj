@@ -139,7 +139,6 @@
     <Compile Include="Models\ItemCharacteristic.cs" />
     <Compile Include="Models\ItemDescription.cs" />
     <Compile Include="Models\ItemImage.cs" />
-    <Compile Include="Models\ItemImageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\CollectionImages\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201411070151389_Initial.resx">

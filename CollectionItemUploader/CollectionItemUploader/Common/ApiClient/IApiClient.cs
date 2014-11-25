@@ -15,5 +15,7 @@ namespace CollectionItemUploader.Common.ApiClient
         Task<IEnumerable<Item>> GetItems(int categoryId);
         Task<IEnumerable<ItemCharacteristic>> GetCharacteristics();
         Task AddItem(Item item, ImageData[] images, ImageData[] screenshots);
+        Task AddCollection(Collection collection);
+        Task AddCategory(Category category);
     }
 }

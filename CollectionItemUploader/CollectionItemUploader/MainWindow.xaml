@@ -4,13 +4,21 @@
         xmlns:uc="clr-namespace:CollectionItemUploader.UserControls"
         Title="MainWindow" Loaded="MainWindow_Loaded" MinWidth="900">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <uc:CategorySelectionUserControl Margin="10" Grid.Column="0" x:Name="CtCategorySelection" VerticalAlignment="Stretch" />
-        <uc:ItemListUserControl Margin="10" Grid.Column="1" />
-        <uc:ItemContentUserControl Margin="10" Grid.Column="2" />
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Orientation="Horizontal">
+            <Button x:Name="BtnAddCollection" Click="BtnAddCollection_Click" Content="Add Collection" />
+            <Button x:Name="BtnAddCategory" Click="BtnAddCategory_Click" Content="Add Category" />
+        </StackPanel>
+        <uc:CategorySelectionUserControl Margin="10" Grid.Row="1" Grid.Column="0" x:Name="CtCategorySelection" VerticalAlignment="Stretch" />
+        <uc:ItemListUserControl Margin="10" Grid.Row="1" Grid.Column="1" />
+        <uc:ItemContentUserControl Margin="10" Grid.Row="1" Grid.Column="2" />
     </Grid>
 </Window>

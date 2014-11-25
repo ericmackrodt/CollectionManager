@@ -19,7 +19,6 @@ namespace CollectionManagerBackend.Models
         public virtual DbSet<ItemCharacteristic> ItemCharacteristics { get; set; }
         public virtual DbSet<ItemDescription> ItemDescriptions { get; set; }
         public virtual DbSet<ItemImage> ItemImages { get; set; }
-        public virtual DbSet<ItemImageType> ItemImageTypes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

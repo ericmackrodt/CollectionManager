@@ -1,0 +1,22 @@
+﻿<Window x:Class="CollectionItemUploader.Views.AddCollectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=CreateCollectionViewModel}"
+        Title="Add Collection" Width="400" Height="200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="Name:" />
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Collection.Name, Mode=TwoWay}" />
+        <Label Grid.Row="1" Grid.Column="0" Content="Description:" />
+        <TextBox Grid.Row="1" Grid.Column="1" AcceptsReturn="True" Height="100" Text="{Binding Path=Collection.Description, Mode=TwoWay}" />
+        <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Content="Save" Command="{Binding SaveCollectionCommand}" Width="50" />
+    </Grid>
+</Window>

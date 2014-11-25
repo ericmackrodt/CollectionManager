@@ -34,7 +34,6 @@ namespace CollectionManagerWebApi
             builder.EntitySet<ItemCharacteristic>("ItemCharacteristics");
             builder.EntitySet<ItemDescription>("ItemDescriptions");
             builder.EntitySet<ItemImage>("ItemImages");
-            builder.EntitySet<ItemImageType>("ItemImageTypes");
 
             //var it = builder.StructuralTypes.First(o => o.ClrType == typeof(Item));
             //it.AddProperty(typeof(Item).GetProperty("DateAcquiredOffset"));

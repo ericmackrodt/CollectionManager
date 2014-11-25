@@ -1,4 +1,5 @@
 ﻿using CollectionItemUploader.ViewModels;
+using CollectionItemUploader.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,18 @@ namespace CollectionItemUploader
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             await (DataContext as MainViewModel).LoadData(null);
+        }
+
+        private void BtnAddCollection_Click(object sender, RoutedEventArgs e)
+        {
+            var addCol = new AddCollectionWindow();
+            addCol.Show();
+        }
+
+        private void BtnAddCategory_Click(object sender, RoutedEventArgs e)
+        {
+            var addCat = new AddCategoryWindow();
+            addCat.Show();
         }
     }
 }

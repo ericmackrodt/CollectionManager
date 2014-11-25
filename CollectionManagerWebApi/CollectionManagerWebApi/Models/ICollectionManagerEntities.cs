@@ -14,7 +14,6 @@ namespace CollectionManagerBackend.Models
         DbSet<ItemCharacteristic> ItemCharacteristics { get; set; }
         DbSet<ItemDescription> ItemDescriptions { get; set; }
         DbSet<ItemImage> ItemImages { get; set; }
-        DbSet<ItemImageType> ItemImageTypes { get; set; }
         int SaveChanges();
     }
 }

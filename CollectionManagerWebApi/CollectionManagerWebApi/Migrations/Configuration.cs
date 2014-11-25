@@ -16,12 +16,12 @@ namespace CollectionManagerWebApi.Migrations
 
         protected override void Seed(CollectionManagerBackend.Models.CollectionManagerEntities context)
         {
-            //context.Collections.Add(new Collection() { Name = "Software" });
-            //context.Collections.Add(new Collection() { Name = "Diversos" });
-            //context.Collections.Add(new Collection() { Name = "Processadores" });
-
-            //context.ItemImageTypes.Add(new ItemImageType() { ItemImageTypeID = 1, Name = "Photo" });
-            //context.ItemImageTypes.Add(new ItemImageType() { ItemImageTypeID = 2, Name = "Screenshot" });
+            if (!context.Collections.Any())
+            {
+                context.Collections.Add(new Collection() { Name = "Software" });
+                context.Collections.Add(new Collection() { Name = "Diversos" });
+                context.Collections.Add(new Collection() { Name = "Processadores" });
+            }
         }
     }
 }

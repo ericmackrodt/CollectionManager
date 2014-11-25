@@ -60,6 +60,31 @@ namespace CollectionItemUploader.Common.ApiClient
             await PostRequest("odata/Items", multipartContent);
         }
 
+        public async Task AddCollection(Collection collection)
+        {
+            var settings = new JsonSerializerSettings()
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            };
+            var jsonContent = new StringContent(JsonConvert.SerializeObject(collection, settings), Encoding.UTF8, "application/json");
+            await PostRequest("odata/Collections", jsonContent);
+        }
+
+        public async Task AddCategory(Category category)
+        {
+            await PostJson("odata/Categories", category);
+        }
+
+        private async Task PostJson(string url, object content)
+        {
+            var settings = new JsonSerializerSettings()
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            };
+            var jsonContent = new StringContent(JsonConvert.SerializeObject(content, settings), Encoding.UTF8, "application/json");
+            await PostRequest(url, jsonContent);
+        }
+
         private async Task PostRequest(string url, HttpContent content)
         {
             var client = new HttpClient();

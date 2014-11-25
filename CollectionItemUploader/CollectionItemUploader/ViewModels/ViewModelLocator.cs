@@ -25,6 +25,8 @@ namespace CollectionItemUploader.ViewModels
             containerBuilder.RegisterType<ItemViewModel>();
             containerBuilder.RegisterType<ItemListViewModel>();
             containerBuilder.RegisterType<CategorySelectionViewModel>();
+            containerBuilder.RegisterType<CreateCollectionViewModel>();
+            containerBuilder.RegisterType<CreateCategoryViewModel>();
 
             _container = containerBuilder.Build();
         }
@@ -42,6 +44,16 @@ namespace CollectionItemUploader.ViewModels
         public ItemViewModel ItemViewModel
         {
             get { return _container.Resolve<ItemViewModel>(); }
+        }
+
+        public CreateCollectionViewModel CreateCollectionViewModel
+        {
+            get { return _container.Resolve<CreateCollectionViewModel>(); }
+        }
+
+        public CreateCategoryViewModel CreateCategoryViewModel
+        {
+            get { return _container.Resolve<CreateCategoryViewModel>(); }
         }
     }
 }
