@@ -12,24 +12,23 @@ angular.module('CollectionPresenter.List', ['ngRoute'])
   });
 }])
 
-.controller("CategoryController", function($scope, $routeParams, Item) {
+.controller("CategoryController", function($scope, $routeParams, categories) {
   $scope.title = "Category";
-  /*Item.query(function (data) {
-		console.log($routeParams.id);
-		$scope.item = data.item;
-	});*/
+  categories.getItems({ id: $routeParams.id }, function(data) {
+    $scope.items = data.value;
+  });
 })
 
-.controller("CollectionController", function($scope, $routeParams, Item) {
+.controller("CollectionController", function($scope, $routeParams, collections, items) {
   var lastSelected = null;
 
   $scope.title = "Collection";
-  Item.get(null, function(data) {
-    $scope.items = data;
+  collections.getItems({ id: $routeParams.id }, function(data) {
+    $scope.items = data.value;
   });
 
   $scope.selectItem = function(item) {
-    Item.get({ id: item.id }, function(data) {
+    items.get({ id: item.id, $expand: 'description,characteristics' }, function(data) {
       $scope.selectedItem = data;
 
       if (lastSelected)

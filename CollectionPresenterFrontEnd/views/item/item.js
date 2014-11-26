@@ -9,8 +9,8 @@ angular.module('CollectionPresenter.Item', ['ngRoute'])
   });
 }])
 
-.controller("ItemController", function($scope, $routeParams, Item) {
-	Item.get({ id: $routeParams.id }, function (data) {
-		$scope.item = data;
+.controller("ItemController", function($scope, $routeParams, items) {
+	items.get({ id: $routeParams.id }, function (data) {
+		$scope.item = data.value;
 	});
 });

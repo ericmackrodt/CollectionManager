@@ -154,6 +154,12 @@ namespace CollectionManagerWebApi.Controllers
             return db.Collections.Where(m => m.CollectionID == key).SelectMany(m => m.Categories);
         }
 
+        [EnableQuery]
+        public IQueryable<Item> GetItems([FromODataUri] int key)
+        {
+            return db.Collections.Where(m => m.CollectionID == key).SelectMany(m => m.Categories).SelectMany(o => o.Items).Distinct();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -7,6 +7,8 @@ using System.Web.OData.Extensions;
 using System.Web.OData.Builder;
 using System.Web.OData.Routing;
 using CollectionManagerWebApi.Common;
+using Microsoft.OData.Edm.Library;
+using Microsoft.OData.Edm;
 
 namespace CollectionManagerWebApi
 {
@@ -35,12 +37,29 @@ namespace CollectionManagerWebApi
             builder.EntitySet<ItemDescription>("ItemDescriptions");
             builder.EntitySet<ItemImage>("ItemImages");
 
+            var edmModel = builder.GetEdmModel();
+
+            var collections = (EdmEntitySet)edmModel.EntityContainer.FindEntitySet("Collections");
+            var items = (EdmEntitySet)edmModel.EntityContainer.FindEntitySet("Items");
+            var itemType = (EdmEntityType)edmModel.FindDeclaredType(typeof(Item).FullName);
+            var collectionType = (EdmEntityType)edmModel.FindDeclaredType(typeof(Collection).FullName);
+
+            var partsProperty = new EdmNavigationPropertyInfo();
+            partsProperty.TargetMultiplicity = EdmMultiplicity.Many;
+            partsProperty.Target = itemType;
+            partsProperty.ContainsTarget = false;
+            partsProperty.OnDelete = EdmOnDeleteAction.None;
+            partsProperty.Name = "items";
+
+            collections.AddNavigationTarget(collectionType.AddUnidirectionalNavigation(partsProperty), items);
+
+
             //var it = builder.StructuralTypes.First(o => o.ClrType == typeof(Item));
             //it.AddProperty(typeof(Item).GetProperty("DateAcquiredOffset"));
             //var item = builder.EntityType<Item>();
             //item.Ignore(t => t.DateAcquired);
 
-            config.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
+            config.MapODataServiceRoute("odata", "odata", edmModel);
         }
     }
 }

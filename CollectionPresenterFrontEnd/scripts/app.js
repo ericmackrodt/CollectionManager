@@ -6,16 +6,19 @@ angular.module("CollectionPresenter", [
 	'CollectionPresenter.List'
 ])
 
+.controller("collectionsController", function ($scope, collections) {
+	$scope.appName = "Collection";
+	if ($scope.collections) return;
+	collections.get({$expand: 'categories'}, function(data) {
+		$scope.collections = data.value;
+	});
+})
+
 .directive("titleBar", function() {
 	return {
 		templateUrl: 'templates/titleBarTemplate.html',
 		restrict: 'E',
-		controller: function ($scope, Collection) {
-			$scope.appName = "Collection";
-			Collection.query(function(data) {
-				$scope.mnCollections = data.collections;
-			});
-		}
+		controller: "collectionsController"
 	};
 })
 
@@ -23,11 +26,7 @@ angular.module("CollectionPresenter", [
 	return {
 		templateUrl: 'templates/categoriesSidebarTemplate.html',
 		restrict: 'E',
-		controller: function ($scope, Categories) {
-			Categories.query(function(data) {
-				$scope.sbCollections = data.collections;
-			});
-		}
+		controller: "collectionsController"
 	};
 })
 
