@@ -2,7 +2,7 @@ angular.module('CollectionPresenter.Item', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/item/:id', {
-    templateUrl: 'views/item/item.html',
+    templateUrl: 'views/item.html',
     controller: 'ItemController'
   }).otherwise({
   	redirectTo: '/'

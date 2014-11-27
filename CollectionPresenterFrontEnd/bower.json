@@ -1,0 +1,25 @@
+{
+  "name": "Collection Presenter Front End",
+  "version": "0.0.1",
+  "description": "The project that shows the collection",
+  "main": "index.html",
+  "authors": [
+    "Eric Mackrodt"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "scripts/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "metro-ui-css": "~2.0.23",
+    "angular": "~1.3.4",
+    "angular-resource": "~1.3.4",
+    "angular-route": "~1.3.4",
+    "jquery-ui": "~1.11.2"
+  }
+}

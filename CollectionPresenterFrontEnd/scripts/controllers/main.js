@@ -2,7 +2,7 @@ angular.module('CollectionPresenter.Main', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {
-    templateUrl: 'views/main/Main.html',
+    templateUrl: 'views/Main.html',
     controller: 'MainController'
   });
 }])

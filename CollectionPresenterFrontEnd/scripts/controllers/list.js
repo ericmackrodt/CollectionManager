@@ -2,10 +2,10 @@ angular.module('CollectionPresenter.List', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/category/:id', {
-    templateUrl: 'views/list/list.html',
+    templateUrl: 'views/list.html',
     controller: 'CategoryController'
   }).when('/collection/:id', {
-    templateUrl: 'views/list/list.html',
+    templateUrl: 'views/list.html',
     controller: 'CollectionController'
   }).otherwise({
   	redirectTo: '/'
