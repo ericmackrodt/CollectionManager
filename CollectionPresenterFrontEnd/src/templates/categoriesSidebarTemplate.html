@@ -1,0 +1,11 @@
+<h3>Categories</h3>
+<nav class="sidebar light">
+	<ul>
+		<section ng-repeat="collection in collections">
+			<li class="title">{{collection.name}}</li> 
+			<li ng-repeat="category in collection.categories">
+				<a href="#/category/{{category.id}}">{{category.name}}</a>
+			</li> 
+		</section>
+	</ul>
+</nav>

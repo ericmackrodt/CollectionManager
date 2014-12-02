@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="CollectionPresenter">
+<head>
+	<link rel="stylesheet" href="css/CollectionPresenter.min.css">
+
+	<script src="scripts/CollectionPresenter.min.js"></script>
+</head>
+
+<body class="metro">
+	<title-bar></title-bar>
+	<div class="container">
+		<div class="grid fluid">
+			<div class="row">
+				<div class="span9">
+					<div ng-view></div>
+				</div>
+				<div class="span3">
+					<categories-sidebar />
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

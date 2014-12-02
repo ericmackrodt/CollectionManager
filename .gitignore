@@ -46,7 +46,8 @@ bin/
 obj/
 packages/
 CollectionManagerWebApi/CollectionManagerWebApi/Content/
-CollectionPresenterFrontEnd/fonts/
-CollectionPresenterFrontEnd/scripts/libs/
-CollectionPresenterFrontEnd/css/metro-bootstrap-responsive.min.css
-CollectionPresenterFrontEnd/css/iconFont.min.css
+CollectionPresenterFrontEnd/src/fonts/
+CollectionPresenterFrontEnd/src/scripts/libs/
+CollectionPresenterFrontEnd/src/css/metro-bootstrap-responsive.min.css
+CollectionPresenterFrontEnd/src/css/iconFont.min.css
+CollectionPresenterFrontEnd/node_modules/

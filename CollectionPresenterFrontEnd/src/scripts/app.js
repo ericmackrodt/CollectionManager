@@ -37,13 +37,13 @@ angular.module("CollectionPresenter", [
 		scope: {
 			item: '='
 		}
-	}
+	};
 })
 
 .directive("itemList", function() {
 	return {
 		templateUrl: 'templates/itemsListTemplate.html',
 		restrict: 'E'
-	}
+	};
 });
 

@@ -1,0 +1,18 @@
+<h3>Collection</h3>
+<img src="http://www.hardwareheaven.com/reviewimages/confessions-of-a-retro-gaming-addict/panarama.jpg" class="rounded shadow" />
+
+<section ng-repeat="collection in collections">
+	<h3>{{collection.title}}</h3>
+	<div class="grid">
+		<div class="row">
+			<div ng-repeat="item in collection.items">
+				<a href="#" class="image-container shadow margin10 span4">
+					<img src="{{item.imgUrl}}"  />
+					<div class="overlay">
+						{{item.title}}
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
