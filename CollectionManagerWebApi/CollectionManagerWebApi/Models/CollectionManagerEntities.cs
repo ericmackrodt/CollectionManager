@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace CollectionManagerBackend.Models
+namespace CollectionManagerWebApi.Models
 {   
     public partial class CollectionManagerEntities : DbContext, ICollectionManagerEntities
     {

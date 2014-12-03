@@ -1,4 +1,4 @@
-﻿using CollectionManagerBackend.Models;
+﻿using CollectionManagerWebApi.Models;
 using CollectionManagerWebApi.Models.DataTransferObjects;
 using System;
 using System.Collections.Generic;

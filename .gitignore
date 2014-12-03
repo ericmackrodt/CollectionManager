@@ -45,9 +45,12 @@ Temporary Items
 bin/
 obj/
 packages/
+PublishProfiles/
+CollectionPresenterFrontEnd/.tmp/
 CollectionManagerWebApi/CollectionManagerWebApi/Content/
 CollectionPresenterFrontEnd/src/fonts/
 CollectionPresenterFrontEnd/src/scripts/libs/
 CollectionPresenterFrontEnd/src/css/metro-bootstrap-responsive.min.css
 CollectionPresenterFrontEnd/src/css/iconFont.min.css
 CollectionPresenterFrontEnd/node_modules/
+CollectionPresenterFrontEnd/dist/scripts/CollectionPresenter.js

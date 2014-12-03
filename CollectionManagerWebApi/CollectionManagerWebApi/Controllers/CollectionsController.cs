@@ -10,7 +10,7 @@ using System.Web.Http;
 using System.Web.ModelBinding;
 using System.Web.OData;
 using System.Web.OData.Routing;
-using CollectionManagerBackend.Models;
+using CollectionManagerWebApi.Models;
 
 namespace CollectionManagerWebApi.Controllers
 {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CollectionManagerWebApi.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -10,7 +11,6 @@ using System.Web.Http;
 using System.Web.ModelBinding;
 using System.Web.OData;
 using System.Web.OData.Routing;
-using CollectionManagerBackend.Models;
 
 namespace CollectionManagerWebApi.Controllers
 {

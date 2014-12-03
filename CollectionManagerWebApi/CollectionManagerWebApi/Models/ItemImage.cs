@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Spatial;
 using System.Runtime.Serialization;
 
-namespace CollectionManagerBackend.Models
+namespace CollectionManagerWebApi.Models
 {
     [DataContract]
     public partial class ItemImage
@@ -24,6 +24,9 @@ namespace CollectionManagerBackend.Models
 
         [DataMember(Name = "imageType")]
         public virtual ImageType ImageType { get; set; }
+
+        [DataMember(Name = "main")]
+        public virtual bool Main { get; set; }
     }
 
     public enum ImageType

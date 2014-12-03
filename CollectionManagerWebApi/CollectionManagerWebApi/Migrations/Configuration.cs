@@ -1,12 +1,12 @@
+using CollectionManagerWebApi.Models;
+using System;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.Linq;
+
 namespace CollectionManagerWebApi.Migrations
 {
-    using CollectionManagerBackend.Models;
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<CollectionManagerBackend.Models.CollectionManagerEntities>
+    internal sealed class Configuration : DbMigrationsConfiguration<CollectionManagerEntities>
     {
         public Configuration()
         {
@@ -14,7 +14,7 @@ namespace CollectionManagerWebApi.Migrations
             AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(CollectionManagerBackend.Models.CollectionManagerEntities context)
+        protected override void Seed(CollectionManagerEntities context)
         {
             if (!context.Collections.Any())
             {

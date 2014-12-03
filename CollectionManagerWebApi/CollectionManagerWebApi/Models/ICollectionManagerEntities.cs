@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
-namespace CollectionManagerBackend.Models
+namespace CollectionManagerWebApi.Models
 {
     public interface ICollectionManagerEntities : IDisposable
     {

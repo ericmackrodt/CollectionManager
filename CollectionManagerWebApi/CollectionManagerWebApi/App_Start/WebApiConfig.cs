@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using CollectionManagerBackend.Models;
 using System.Web.OData.Extensions;
 using System.Web.OData.Builder;
 using System.Web.OData.Routing;
 using CollectionManagerWebApi.Common;
 using Microsoft.OData.Edm.Library;
 using Microsoft.OData.Edm;
+using CollectionManagerWebApi.Models;
+using System.Net.Http.Formatting;
 
 namespace CollectionManagerWebApi
 {

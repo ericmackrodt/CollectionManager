@@ -15,7 +15,7 @@ module.exports = function (grunt) {
 					'src/scripts/libs/angular-route/angular-route.js',
 					'src/scripts/*.js', 
 					'src/scripts/controllers/*.js',
-					'!src/scripts/dev-*.js', //needs to remove dev-settings
+					'!src/**/dev-*.js'
 				],
 				dest: 'dist/scripts/<%= pkg.name %>.js'
 			}

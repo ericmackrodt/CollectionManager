@@ -14,7 +14,7 @@ namespace CollectionItemUploader.Common.ApiClient
 {
     public class ApiClient : IApiClient
     {
-        private readonly string _baseUrl = "http://localhost/CollectionManagerWebApi/";
+        private readonly string _baseUrl = "http://collectionservice.ericmackrodt.com/";
 
         public async Task<IEnumerable<Collection>> GetCollections()
         {

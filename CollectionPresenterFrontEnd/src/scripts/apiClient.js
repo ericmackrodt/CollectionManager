@@ -18,4 +18,8 @@ angular.module("CollectionPresenter.ApiClient", ['ngResource', 'CollectionPresen
 .factory("items", function($resource, settings) {
 	var odataUrl = settings.baseServiceUrl + '/odata/Items(:id)';
 	return $resource(odataUrl);	
+})
+
+.factory("main", function($resource, settings) {
+	return $resource(settings.baseServiceUrl + '/api/Main');	
 });
