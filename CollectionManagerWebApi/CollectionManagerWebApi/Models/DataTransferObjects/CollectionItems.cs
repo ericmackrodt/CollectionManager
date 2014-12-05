@@ -9,6 +9,9 @@ namespace CollectionManagerWebApi.Models.DataTransferObjects
     [DataContract]
     public class CollectionItems
     {
+        [DataMember(Name = "id")]
+        public int Id { get; set; }
+
         [DataMember(Name = "collection")]
         public string Collection { get; set; }
         

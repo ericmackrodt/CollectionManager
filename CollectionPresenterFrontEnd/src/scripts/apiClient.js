@@ -1,25 +1,30 @@
-angular.module("CollectionPresenter.ApiClient", ['ngResource', 'CollectionPresenter.Settings'])
+//apiClient.js
+(function (angular) {
 
-.factory("collections", function($resource, settings) {
-	var odataUrl = settings.baseServiceUrl + '/odata/Collections(:id)';
-	return $resource(odataUrl, {}, {
-		'getCategories': { method: "GET", url: odataUrl + "/categories" },
-		'getItems': { method: "GET", url: odataUrl + "/items" }
-	});
-})
+	var app = angular.module("CollectionPresenter.ApiClient", ['ngResource', 'CollectionPresenter.Settings'])
 
-.factory("categories", function($resource, settings) {
-	var odataUrl = settings.baseServiceUrl + '/odata/Categories(:id)';
-	return $resource(odataUrl, {}, {
-		'getItems': { method: "GET", url: odataUrl + "/items" }
-	});
-})
+	app.factory("collections", ['$resource', 'settings', function($resource, settings) {
+		var odataUrl = settings.baseServiceUrl + '/odata/Collections(:id)';
+		return $resource(odataUrl, {}, {
+			'getCategories': { method: "GET", url: odataUrl + "/categories" },
+			'getItems': { method: "GET", url: odataUrl + "/items" }
+		});
+	}]);
 
-.factory("items", function($resource, settings) {
-	var odataUrl = settings.baseServiceUrl + '/odata/Items(:id)';
-	return $resource(odataUrl);	
-})
+	app.factory("categories", ['$resource', 'settings', function($resource, settings) {
+		var odataUrl = settings.baseServiceUrl + '/odata/Categories(:id)';
+		return $resource(odataUrl, {}, {
+			'getItems': { method: "GET", url: odataUrl + "/items" }
+		});
+	}]);
 
-.factory("main", function($resource, settings) {
-	return $resource(settings.baseServiceUrl + '/api/Main');	
-});
+	app.factory("items", ['$resource', 'settings', function($resource, settings) {
+		var odataUrl = settings.baseServiceUrl + '/odata/Items(:id)';
+		return $resource(odataUrl);	
+	}]);
+
+	app.factory("main", ['$resource', 'settings', function($resource, settings) {
+		return $resource(settings.baseServiceUrl + '/api/Main');	
+	}]);
+
+}) (window.angular);

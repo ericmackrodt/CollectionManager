@@ -1,16 +1,21 @@
-angular.module('CollectionPresenter.Item', ['ngRoute'])
+//item.js
+(function (angular) {
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/item/:id', {
-    templateUrl: 'views/item.html',
-    controller: 'ItemController'
-  }).otherwise({
-  	redirectTo: '/'
-  });
-}])
+	var app = angular.module('CollectionPresenter.Item', ['ngRoute']);
 
-.controller("ItemController", function($scope, $routeParams, items) {
-	items.get({ id: $routeParams.id }, function (data) {
-		$scope.item = data.value;
-	});
-});
+	app.config(['$routeProvider', function($routeProvider) {
+		$routeProvider.when('/item/:id', {
+			templateUrl: 'views/item.html',
+			controller: 'ItemController'
+		}).otherwise({
+			redirectTo: '/'
+		});
+	}]);
+
+	app.controller("ItemController", ['$scope', '$routeParams', 'items', function($scope, $routeParams, items) {
+		items.get({ id: $routeParams.id }, function (data) {
+			$scope.item = data.value;
+		});
+	}]);
+
+}) (window.angular);

@@ -19,12 +19,13 @@ namespace CollectionManagerWebApi.Controllers
             {
                 var collections = db.Collections.ToList().Select(o => new CollectionItems()
                 {
+                    Id = o.CollectionID,
                     Collection = o.Name,
                     Items = o.Categories
                         .SelectMany(c => c.Items)
                         .OrderByDescending(i => i.StandsOut)
                         .ThenBy(i => Guid.NewGuid())
-                        .Take(6)
+                        .Take(8)
                         .Select(i => new ItemDTO()
                         {
                             Id = i.ItemID,
