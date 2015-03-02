@@ -31,7 +31,8 @@ namespace CollectionManagerWebApi.Controllers
                             Id = i.ItemID,
                             Name = i.Name,
                             Description = i.Description.Content,
-                            Image = i.Images.FirstOrDefault(img => img.ImageType == ImageType.Image && img.Main).Path
+                            Image = i.Images.FirstOrDefault(img => img.ImageType == ImageType.Image && img.Main).Path,
+                            Characteristics = i.Characteristics.Select(x => x.Name).ToArray()
                         }).ToArray()
                 }).ToArray();
                 return new ObjectResponse<CollectionItems[]>(collections);

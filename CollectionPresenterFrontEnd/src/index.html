@@ -2,8 +2,34 @@
 <html ng-app="CollectionPresenter">
 <head>
 	<!-- build:css css/CollectionPresenter.min.css -->
-	<link rel="stylesheet" type="text/css" href="scripts/libs/metro-ui-css/min/metro-bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="scripts/libs/metro-ui-css/min/metro-responsive.min.css">
+	<link rel="stylesheet" type="text/css" href="scripts/libs/materialize/dist/css/materialize.css" />
+	<style type="text/css">
+header, main, footer {
+    padding-left: 240px;
+  }
+
+  @media only screen and (max-width : 992px) {
+    header, main, footer {
+      padding-left: 0;
+    }
+  }
+
+  .bold {
+  	font-weight: bold;
+  }
+  section.menu-section {
+  	margin-top: 20px;
+  }
+
+  section.menu-section li {
+  	line-height: 44px;
+  }
+
+  .container {
+  	width: 85%;
+  }
+	</style>
+
 	<!-- endbuild -->
 
 	<!-- build:js scripts/CollectionPresenter.min.js -->	
@@ -19,23 +45,20 @@
 
 	<script type="text/javascript" src="scripts/libs/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="scripts/libs/jquery-ui/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="scripts/libs/metro-ui-css/min/metro.min.js"></script>
+	<script type="text/javascript" src="scripts/libs/materialize/dist/js/materialize.js"></script>
 	<!-- endbuild -->
 </head>
 
-<body class="metro">
-	<title-bar></title-bar>
-	<div class="container">
-		<div class="grid fluid">
-			<div class="row">
-				<div class="span9">
-					<div ng-view></div>
-				</div>
-				<div class="span3">
-					<categories-sidebar />
-				</div>
-			</div>
+<body>
+	<header>
+		<title-bar></title-bar>
+		<categories-sidebar />	
+	</header>
+
+	<main>
+		<div class="container">
+			<div ng-view></div>
 		</div>
-	</div>
+	</main>
 </body>
 </html>

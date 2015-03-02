@@ -9,6 +9,12 @@
 		'CollectionPresenter.List'
 	]);
 
+	app.run(['$rootScope', 'settings', function ($rootScope, settings) {
+		$rootScope.getImageUrl = function(url, w, h) {
+			return settings.serverImagesFolder + url + "?width=" + w + "&height=" + h + "&mode=crop";
+		};
+	}]);
+
 	app.controller("collectionsController", ['$scope', 'collections', 'settings', function ($scope, collections, settings) {
 		$scope.appName = settings.appTitle;
 		if ($scope.collections) return;

@@ -17,5 +17,7 @@ namespace CollectionManagerWebApi.Models.DataTransferObjects
         public string Description { get; set; }
         [DataMember(Name = "image")]
         public string Image { get; set; }
+        [DataMember(Name = "characteristics")]
+        public string[] Characteristics { get; set; }
     }
 }

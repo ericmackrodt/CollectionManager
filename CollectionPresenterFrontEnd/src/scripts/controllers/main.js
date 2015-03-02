@@ -16,10 +16,6 @@
 		});
 
 		$scope.headerImage = settings.mainHeaderImage;
-
-		$scope.getImageUrl = function(url, w, h) {
-			return settings.serverImagesFolder + url + "?width=" + w + "&height=" + h + "&mode=crop";
-		}
 	}]);
 
 }) (window.angular);

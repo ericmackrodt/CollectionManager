@@ -14,8 +14,12 @@
   }]);
 
   app.controller("CategoryController", ['$scope', '$routeParams', 'categories', function($scope, $routeParams, categories) {
-    $scope.title = "Category";
-    categories.getItems({ id: $routeParams.id }, function(data) {
+    categories.get({ id: $routeParams.id }, function(data) {
+      $scope.title = data.name;
+      $scope.description = data.description;
+    });
+
+    categories.getItems({ id: $routeParams.id, $expand: 'characteristics,images' }, function(data) {
       $scope.items = data.value;
     });
   }]);
@@ -23,8 +27,12 @@
   app.controller("CollectionController", ['$scope', '$routeParams', 'collections', 'items', function($scope, $routeParams, collections, items) {
     var lastSelected = null;
 
-    $scope.title = "Collection";
-    collections.getItems({ id: $routeParams.id }, function(data) {
+    collections.get({ id: $routeParams.id }, function(data) {
+      $scope.title = data.name;
+      $scope.description = data.description;
+    });
+
+    collections.getItems({ id: $routeParams.id, $expand: 'characteristics,images' }, function(data) {
       $scope.items = data.value;
     });
 

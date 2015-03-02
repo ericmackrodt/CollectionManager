@@ -1,18 +1,19 @@
-<h3>Collection</h3>
-<img src="http://www.hardwareheaven.com/reviewimages/confessions-of-a-retro-gaming-addict/panarama.jpg" class="rounded shadow" />
+<h3>{{appName}}</h3>
+<img ng-src="{{headerImage}}" class="rounded shadow" />
 
 <section ng-repeat="collection in collections">
-	<h3>{{collection.title}}</h3>
+	<h3>{{collection.collection}}</h3>
 	<div class="grid">
 		<div class="row">
 			<div ng-repeat="item in collection.items">
-				<a href="#" class="image-container shadow margin10 span4">
-					<img src="{{item.imgUrl}}"  />
+				<a href="#" class="image-container shadow margin10 span3" title="{{item.name}}">
+					<img ng-src="{{getImageUrl(item.image, 270, 270)}}" alt="{{item.name}}" />
 					<div class="overlay">
-						{{item.title}}
+						{{item.name}}
 					</div>
 				</a>
 			</div>
 		</div>
+		<a class="button" href="#/collection/{{collection.id}}">See more...</a>
 	</div>
 </section>

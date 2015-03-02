@@ -1,20 +1,22 @@
 //apiClient.js
 (function (angular) {
 
-	var app = angular.module("CollectionPresenter.ApiClient", ['ngResource', 'CollectionPresenter.Settings'])
+	var app = angular.module("CollectionPresenter.ApiClient", ['ngResource', 'CollectionPresenter.Settings']);
 
 	app.factory("collections", ['$resource', 'settings', function($resource, settings) {
 		var odataUrl = settings.baseServiceUrl + '/odata/Collections(:id)';
 		return $resource(odataUrl, {}, {
 			'getCategories': { method: "GET", url: odataUrl + "/categories" },
-			'getItems': { method: "GET", url: odataUrl + "/items" }
+			'getItems': { method: "GET", url: odataUrl + "/items" },
+			'get': { method: "GET", url: odataUrl }
 		});
 	}]);
 
 	app.factory("categories", ['$resource', 'settings', function($resource, settings) {
 		var odataUrl = settings.baseServiceUrl + '/odata/Categories(:id)';
 		return $resource(odataUrl, {}, {
-			'getItems': { method: "GET", url: odataUrl + "/items" }
+			'getItems': { method: "GET", url: odataUrl + "/items" },
+			'get': { method: "GET", url: odataUrl }
 		});
 	}]);
 

@@ -13,8 +13,8 @@
 	}]);
 
 	app.controller("ItemController", ['$scope', '$routeParams', 'items', function($scope, $routeParams, items) {
-		items.get({ id: $routeParams.id }, function (data) {
-			$scope.item = data.value;
+		items.get({ id: $routeParams.id, $expand: 'characteristics,images' }, function (data) {
+			$scope.item = data;
 		});
 	}]);
 
