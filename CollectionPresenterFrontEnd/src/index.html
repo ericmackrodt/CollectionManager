@@ -5,13 +5,34 @@
 	<link rel="stylesheet" type="text/css" href="scripts/libs/materialize/dist/css/materialize.css" />
 	<style type="text/css">
 header, main, footer {
-    padding-left: 240px;
+    margin-left: 240px;
   }
 
-  @media only screen and (max-width : 992px) {
+  .page-title {
+  	position: absolute;
+	color: #fff;
+	display: inline-block;
+	font-size: 2.1rem;
+	padding: 0;
+}
+
+nav#main-nav {
+  	padding-right: 240px;
+  }
+
+@media only screen and (max-width : 992px) {
     header, main, footer {
-      padding-left: 0;
+      margin-left: 0;
     }
+
+    .page-title {
+   		font-size: 1.8rem;
+   		text-align: center;
+    }
+
+    nav#main-nav {
+  	padding-right: 0;
+  }
   }
 
   .bold {
@@ -28,6 +49,8 @@ header, main, footer {
   .container {
   	width: 85%;
   }
+
+  
 	</style>
 
 	<!-- endbuild -->
@@ -36,7 +59,9 @@ header, main, footer {
 	<script type="text/javascript" src="scripts/libs/angular/angular.min.js"></script>
 	<script type="text/javascript" src="scripts/libs/angular-route/angular-route.min.js"></script>
 	<script type="text/javascript" src="scripts/libs/angular-resource/angular-resource.min.js"></script>
+	<script type="text/javascript" src="scripts/libs/underscore/underscore.js"></script>
 	<script type="text/javascript" src="scripts/dev-settings.js"></script>
+	<script type="text/javascript" src="scripts/third-party.js"></script>
 	<script type="text/javascript" src="scripts/app.js"></script>
 	<script type="text/javascript" src="scripts/apiClient.js"></script>
 	<script type="text/javascript" src="scripts/controllers/main.js"></script>

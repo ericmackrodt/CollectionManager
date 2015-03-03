@@ -93,6 +93,7 @@
                 
                 <Label Grid.Column="0" Grid.Row="14" Content="Images:" />
                 <ListBox Grid.Column="1" Grid.Row="14" Height="100" ItemsSource="{Binding Images, Mode=TwoWay}"
+                         SelectedItem="{Binding SelectedImage, Mode=TwoWay}"
                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                          dd:DragDrop.IsDropTarget="True" dd:DragDrop.DropHandler="{Binding Images}" AllowDrop="True">
                     <ListBox.ItemsPanel>
@@ -110,6 +111,7 @@
 
                 <Label Grid.Column="0" Grid.Row="15" Content="Screenshots:" />
                 <ListBox Grid.Column="1" Grid.Row="15" Height="100" ItemsSource="{Binding Screenshots, Mode=TwoWay}"
+                         SelectedItem="{Binding SelectedScreenshot, Mode=TwoWay}"
                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                          dd:DragDrop.IsDropTarget="True" dd:DragDrop.DropHandler="{Binding Screenshots}" AllowDrop="True">
                     <ListBox.ItemsPanel>

@@ -1,1 +1,40 @@
-<item-presenter item="item"></item-presenter>
+<h4>{{item.name}} <small>({{item.year}})</small></h4>
+<blockquote>
+	<p>{{item.description.content}}</p>
+	<small><a href="{{item.description.url}}" target="_blank">{{item.description.source}}</a></small>
+</blockquote>
+
+<dl>
+	<dt>Developer:</dt>
+	<dd>{{item.developer}}</dd>
+	<dt>Publisher:</dt>
+	<dd>{{item.publisher}}</dd>
+	<dt>Manufacturer:</dt>
+	<dd>{{item.manufacturer}}</dd>
+	<dt>Date Acquired:</dt>
+	<dd>{{item.dateAcquired}}</dd>
+</dl>
+
+<h5>Characteristics</h5>
+<ul>
+	<li ng-repeat="characteristic in item.characteristics">{{characteristic.name}}</li>
+</ul>
+
+<h5>Images</h5>
+<div class="row">
+	<a href="{{getImageUrl(image.path, 210, 210)}}" ng-repeat="image in images track by $index" class="col l3 m6 s12">
+		<img ng-src="{{getImageUrl(image.path,210,210)}}" class="z-depth-3 responsive-img" />
+	</a>
+</div>
+
+<h5>Screenshots</h5>
+<div class="grid fluid">
+	<div class="row">
+		<a href="{{getImageUrl(image.path, 210, 210)}}" ng-repeat="image in screenshots track by $index" class="col l3 m6 s12">
+		<img ng-src="{{getImageUrl(image.path,210,210)}}" class="z-depth-3 responsive-img" />
+	</a>
+	</div>
+</div>
+
+<h5>Youtube Video</h5>
+<iframe id="ytplayer" type="text/html" ng-show="item.youtubeVideo" ng-src="{{item.youtubeVideo}}" frameborder="0"/>

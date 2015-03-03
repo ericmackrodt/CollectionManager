@@ -23,6 +23,7 @@ namespace CollectionManagerWebApi.Controllers
                     Collection = o.Name,
                     Items = o.Categories
                         .SelectMany(c => c.Items)
+                        .Distinct()
                         .OrderByDescending(i => i.StandsOut)
                         .ThenBy(i => Guid.NewGuid())
                         .Take(8)

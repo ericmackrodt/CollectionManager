@@ -39,7 +39,7 @@
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Broadcaster">
-      <HintPath>..\..\..\Broadcaster\Src\Broadcaster\bin\Debug\Broadcaster.dll</HintPath>
+      <HintPath>..\packages\Broadcaster.1.0.1.0\lib\portable-net45+sl50+win+wpa81+wp80\Broadcaster.dll</HintPath>
     </Reference>
     <Reference Include="GongSolutions.Wpf.DragDrop">
       <HintPath>..\packages\gong-wpf-dragdrop.0.1.4.3\lib\net40\GongSolutions.Wpf.DragDrop.dll</HintPath>
@@ -60,7 +60,7 @@
       <HintPath>..\packages\Microsoft.Spatial.6.8.1\lib\portable-net40+sl5+wp8+win8+wpa\Microsoft.Spatial.dll</HintPath>
     </Reference>
     <Reference Include="MVVMBasic">
-      <HintPath>..\..\..\MvvmBasic\src\MVVMBasic\bin\Debug\MVVMBasic.dll</HintPath>
+      <HintPath>..\packages\MVVMBasic.1.0.0.1\lib\portable-net45+win+wpa81+wp80\MVVMBasic.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

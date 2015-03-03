@@ -4,7 +4,7 @@
 	<small><a href="{{item.description.url}}" target="_blank">{{item.description.source}}</a></small>
 </blockquote>
 
-<dl class="horizontal">
+<dl>
 	<dt>Developer:</dt>
 	<dd>{{item.developer}}</dd>
 	<dt>Publisher:</dt>
@@ -15,7 +15,7 @@
 	<dd>{{item.dateAcquired}}</dd>
 </dl>
 
-<h4>Characteristics</h4>
+<h5>Characteristics</h5>
 <ul>
 	<li ng-repeat="characteristic in item.characteristics">{{characteristic.name}}</li>
 </ul>
@@ -23,8 +23,8 @@
 <h4>Images</h4>
 <div class="grid fluid">
 	<div class="row">
-		<a href="{{image}}" ng-repeat="image in item.images track by $index">
-			<img ng-src="{{image}}" class="span3 shadow margin10" />
+		<a href="{{getImageUrl(image.path, 210, 210)}}" ng-repeat="image in item.images track by $index">
+			<img ng-src="{{getImageUrl(image.path,210,210)}}" />
 		</a>
 	</div>
 </div>

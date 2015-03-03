@@ -1,15 +1,19 @@
 <ul id="slide-out" class="right side-nav fixed">
 	<li class="no-padding">
-		<nav class="menu-nav">
+		<nav class="menu-nav blue">
 			<div class="nav-wrapper">
-				<div>Categories</div>
+				<div class="row">
+			    	<div class="col s12">
+						<div>Categories</div>
+					</div>
+				</div>
 		    </div>
 		</nav>
 	</li>
 	<section class="no-padding menu-section" ng-repeat="collection in collections">
 		<ul>
-		    <li class="bold"><a href="#/collection/{{collection.id}}" class="waves-effect waves-teal">{{collection.name}}</a></li>
-		    <li ng-repeat="category in collection.categories"><a href="#/category/{{category.id}}" class="waves-effect waves-teal">{{category.name}}</a></li>
+		    <li class="bold"><a href="#/collection/{{collection.id}}" class="waves-effect waves-blue">{{collection.name}}</a></li>
+		    <li ng-repeat="category in collection.categories"><a href="#/category/{{category.id}}" class="waves-effect waves-blue">{{category.name}}</a></li>
 		</ul>
 	</sectin>
 </ul>

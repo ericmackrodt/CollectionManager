@@ -1,9 +1,10 @@
 <div class="navbar-fixed">
-	<nav>
-	    <div class="nav-wrapper">
-		    <div class="row">
-			    <div class="col s12">
-					<a href="#/" class="brand-logo">{{appName}}</a>
+	<nav id="main-nav" class="blue"> 
+		<div class="nav-wrapper">   
+	    <div class="row">
+		    <div class="col m12 s12">
+			    
+					<a href="#/" class="page-title">{{appName}}</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
 						<li ng-repeat="collection in collections">
 							<a href="#/collection/{{collection.id}}">{{collection.name}}</a>

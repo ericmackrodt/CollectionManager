@@ -11,5 +11,6 @@ namespace CollectionItemUploader.Models.DataTransferObjects
         public string FileName { get; set; }
         public string MimeType { get; set; }
         public byte[] Content { get; set; }
+        public bool Main { get; set; }
     }
 }

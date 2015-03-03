@@ -82,6 +82,28 @@ namespace CollectionItemUploader.ViewModels
             }
         }
 
+        private ImageData _selectedImage;
+        public ImageData SelectedImage
+        {
+            get { return _selectedImage; }
+            set
+            {
+                _selectedImage = value;
+                NotifyChanged();
+            }
+        }
+
+        private ImageData _selectedScreenshot;
+        public ImageData SelectedScreenshot
+        {
+            get { return _selectedScreenshot; }
+            set
+            {
+                _selectedScreenshot = value;
+                NotifyChanged();
+            }
+        }
+        
         private ImageDragAndDropCollection _screenshots;
         public ImageDragAndDropCollection Screenshots
         {
@@ -165,21 +187,36 @@ namespace CollectionItemUploader.ViewModels
 
         private async Task SaveItem(Item arg)
         {
-            var selectedCharacteristics = ItemCharacteristics.Where(o => o.IsSelected);
-            if (!selectedCharacteristics.Any()) return;
+            try
+            {
+                var selectedCharacteristics = ItemCharacteristics.Where(o => o.IsSelected);
+                if (!selectedCharacteristics.Any()) return;
 
-            var selectedCategories = SelectedCollection.Categories.Where(o => o.IsSelected);
-            if (!selectedCategories.Any()) return;
+                var selectedCategories = SelectedCollection.Categories.Where(o => o.IsSelected);
+                if (!selectedCategories.Any()) return;
 
-            var images = Images.ToArray();
-            if (!images.Any()) return;
+                var images = Images.ToArray();
+                if (!images.Any()) return;
 
-            var screenshots = Screenshots.ToArray();
+                var selectedImage = Images.FirstOrDefault(o => o.FileName == SelectedImage.FileName);
+                if (selectedImage != null)
+                    selectedImage.Main = true;
 
-            Item.Characteristics = selectedCharacteristics.ToList();
-            Item.Categories = selectedCategories.ToList();
+                var screenshots = Screenshots.ToArray();
 
-            await _apiClient.AddItem(Item, images, screenshots);
+                var selectedScreenshot = Screenshots.FirstOrDefault(o => o.FileName == SelectedScreenshot.FileName);
+                if (selectedScreenshot != null)
+                    selectedScreenshot.Main = true;
+
+                Item.Characteristics = selectedCharacteristics.ToList();
+                Item.Categories = selectedCategories.ToList();
+
+                await _apiClient.AddItem(Item, images, screenshots);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void CollectionSelected(Collection obj)
